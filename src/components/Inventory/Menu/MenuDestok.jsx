@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 250,
+    minWidth: 280,
   },
   menu: {
     margin: "15px",
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   DashboardStyle: {
     backgroundColor: "#F5F5F5",
-    marginBottom: "12px",
+    paddingBottom: "0px",
   },
 }));
 
@@ -43,9 +43,16 @@ const MenuDestok = (props) => {
   };
 
   return (
-    <div className={classes.menu}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={3} className={classes.menuPadding}>
+    <div>
+      <Grid container spacing={40}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={4}
+          lg={3}
+          style={{paddingLeft: 25, paddingRight: 0, marginTop: 15, marginBottom: 15}} 
+        >
           <FormControl className={classes.formControl}>
             <InputLabel id="demo-controlled-open-select-label">Year</InputLabel>
             <Select
@@ -168,12 +175,11 @@ const MenuDestok = (props) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={9} className={classes.DashboardStyle}>
-
+        <Grid item xs={12} sm={12} md={8} lg={9} className={classes.DashboardStyle}>
           {filteredData >= 0 ? (
-              <NofilterData vehicle={props.vehicle} />
-              ) : (
-                  <FilterData filteredData={filteredData} />
+            <NofilterData vehicle={props.vehicle} />
+          ) : (
+            <FilterData filteredData={filteredData} />
           )}
         </Grid>
       </Grid>

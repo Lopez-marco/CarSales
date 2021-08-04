@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import Main from "./Main";
 import WhyUs from "./WhyUs";
 import Dashboard from "./Inventory/Dashboard";
-import {Route, Link, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 const SwitchLink = (props) => {
   const front = () => {
