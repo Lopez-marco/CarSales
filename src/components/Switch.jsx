@@ -4,6 +4,8 @@ import Main from "./Main";
 import WhyUs from "./WhyUs";
 import Dashboard from "./Inventory/Dashboard";
 import {Route, Switch} from "react-router-dom";
+import Auth from "./Auth/Auth";
+import VehicleView from "./Inventory/Vehicle/VehicleView";
 
 const SwitchLink = (props) => {
   const front = () => {
@@ -25,6 +27,10 @@ const SwitchLink = (props) => {
         <Route exact path="/inventory">
             <Dashboard />
         </Route>
+        <Route exact path="/login">
+            <Auth />
+        </Route>
+        <Route exact path="/product_view/:id" component={VehicleView} />
       </Switch>
     </div>
   );

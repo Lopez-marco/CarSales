@@ -123,7 +123,7 @@ const Navbar = (props) => {
         >
           <TwitterIcon fontSize="small" className={classes.home} />
         </IconButton>
-        <Button className={classes.home} variant="outlined">
+        <Button className={classes.home} variant="outlined" href="/login">
           {" "}
           <LockOpenIcon fontSize="small" className={classes.home} />
           Login

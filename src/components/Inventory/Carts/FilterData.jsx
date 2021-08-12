@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -7,8 +7,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import {makeStyles} from "@material-ui/core/styles";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Divider from "@material-ui/core/Divider";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,13 +67,15 @@ const FilterData = (props) => {
             style={{paddingLeft: 0, paddingRight: 0}}
           >
             <Card className={classes.root} hover="true">
-              <CardMedia
-                className={classes.image}
-                component="img"
-                alt={value.make}
-                image={value.photo[0]}
-                title={value.make}
-              />
+              <Link to={`/product_view/${value.id}`}>
+                <CardMedia
+                  className={classes.image}
+                  component="img"
+                  alt={value.make}
+                  image={value.photo[0]}
+                  title={value.make}
+                />
+              </Link>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   {value.year} {value.make} {value.model}
@@ -90,7 +92,7 @@ const FilterData = (props) => {
               </CardContent>
               <CardActions>
                 <Button
-                  href="#contained-buttons"
+                  href={`/product_view/${value.id}`}
                   className={classes.button}
                   style={{cursor: "pointer"}}
                 >
