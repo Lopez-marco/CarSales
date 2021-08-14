@@ -1,18 +1,8 @@
 import React from "react";
 import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
-import {makeStyles} from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-      marginTop: 25,
-    },
-  }));
 
 const CarouselComponents = (props) => {
-    const classes = useStyles();
-
   const images = props.images.map((number) => ({
     src: `${number}`,
     sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',

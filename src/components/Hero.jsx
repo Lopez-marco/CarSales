@@ -6,8 +6,8 @@ import {
   CarouselIndicators,
   CarouselCaption
 } from 'reactstrap';
-import Sky from "../assets/front.jpg"
-import Sky2 from "../assets/Front2.jpg"
+// import Sky from "../assets/front.jpg"
+// import Sky2 from "../assets/Front2.jpg"
 import Sky3 from "../assets/front3.jpg"
 
 const items = [

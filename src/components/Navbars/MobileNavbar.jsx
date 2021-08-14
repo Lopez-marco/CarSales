@@ -13,7 +13,9 @@ import Biglogo from "../../assets/logo_size.jpg";
 import LocalPhoneIcon from "@material-ui/icons/LocalPhone";
 import {List, ListItem, Grid, SwipeableDrawer} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
-import { Link } from 'react-router-dom';
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import {Link} from "react-router-dom";
+import DashboardIcon from "@material-ui/icons/Dashboard";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -66,14 +68,48 @@ const useStyles = makeStyles((theme) =>
     },
     links: {
       textDecoration: "none",
-      color: "black"
-    }
+      color: "black",
+    },
   })
 );
 
 const Navbar = (props) => {
   const classes = useStyles();
   const [drawer, setDrawer] = useState(false);
+
+  let token = localStorage.getItem("token");
+  const LoginTrue =
+    props.sessionToken === token ? (
+      <>
+        <Link to="/adminarea" className={classes.links}>
+          <ListItem key={3} button divider>
+            <DashboardIcon style={{color: "#DE3736", marginRight: "10px"}} />
+            <Typography variant="subtitle1">Admin</Typography>
+          </ListItem>
+        </Link>
+        <Link to="/" className={classes.links}>
+          <ListItem
+            key={3}
+            button
+            divider
+            onClick={() => {
+              props.clearToken();
+            }}
+          >
+            <LockOpenIcon style={{color: "#DE3736", marginRight: "10px"}} />
+            <Typography variant="subtitle1">Log Out</Typography>
+          </ListItem>
+        </Link>
+      </>
+    ) : (
+      <Link to="/login" className={classes.links}>
+        <ListItem key={3} button divider>
+          <LockOpenIcon style={{color: "#DE3736", marginRight: "10px"}} />
+          <Typography variant="subtitle1">Login</Typography>
+        </ListItem>
+      </Link>
+    );
+
   return (
     <div>
       <AppBar position="sticky" className={classes.mininavbar}>
@@ -138,44 +174,45 @@ const Navbar = (props) => {
                 style={{width: "125px", paddingBottom: "10px"}}
               />
             </ListItem>
-            <Link to='/' className={classes.links}>
-            <ListItem key={1} button divider href="/">
-              <HomeIcon style={{color: "#DE3736", marginRight: "10px"}} />{" "}
-              <Typography variant="subtitle1">Home</Typography>
-            </ListItem>
+            <Link to="/" className={classes.links}>
+              <ListItem key={1} button divider>
+                <HomeIcon style={{color: "#DE3736", marginRight: "10px"}} />{" "}
+                <Typography variant="subtitle1">Home</Typography>
+              </ListItem>
             </Link>
-            <Link to='/inventory' className={classes.links}>
-            <ListItem key={2} button divider>
-              <svg 
-                xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-building-warehouse"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#DE3736"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+            <Link to="/inventory" className={classes.links}>
+              <ListItem key={2} button divider>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-building-warehouse"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="#DE3736"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M3 21v-13l9 -4l9 4v13" />
-                <path d="M13 13h4v8h-10v-6h6" />
-                <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3" />
-              </svg>
-              <Typography variant="subtitle1" style={{marginLeft: "10px"}}>
-                Inventory
-              </Typography>
-            </ListItem>
-                </Link>
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 21v-13l9 -4l9 4v13" />
+                  <path d="M13 13h4v8h-10v-6h6" />
+                  <path d="M13 21v-9a1 1 0 0 0 -1 -1h-2a1 1 0 0 0 -1 1v3" />
+                </svg>
+                <Typography variant="subtitle1" style={{marginLeft: "10px"}}>
+                  Inventory
+                </Typography>
+              </ListItem>
+            </Link>
             <ListItem key={2} button divider>
               <InfoIcon style={{color: "#DE3736", marginRight: "10px"}} />{" "}
               <Typography variant="subtitle1">About us</Typography>
             </ListItem>
-            <ListItem key={3} button divider >
+            <ListItem key={3} button divider>
               <MailIcon style={{color: "#DE3736", marginRight: "10px"}} />
               <Typography variant="subtitle1">Contact us</Typography>
             </ListItem>
+            {LoginTrue}
           </List>
         </div>
       </SwipeableDrawer>

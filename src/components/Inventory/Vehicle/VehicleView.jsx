@@ -60,7 +60,7 @@ const VehicleView = (props) => {
 
   useEffect(() => {
     fetchVehicle();
-  }, []);
+  },);
 
   const isthereData = () => {
     return vehicle.length > 0 ? dataDisplay() : "No Vehicle";

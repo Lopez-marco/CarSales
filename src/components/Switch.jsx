@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Main from "./Main";
 import WhyUs from "./WhyUs";
 import Dashboard from "./Inventory/Dashboard";
+import DashboardAdmin from "./Admin/Dashboard";
 import {Route, Switch} from "react-router-dom";
 import Auth from "./Auth/Auth";
 import VehicleView from "./Inventory/Vehicle/VehicleView";
@@ -28,7 +29,10 @@ const SwitchLink = (props) => {
             <Dashboard />
         </Route>
         <Route exact path="/login">
-            <Auth />
+            <Auth updateToken={props.updateToken}/>
+        </Route>
+        <Route exact path="/adminarea">
+            <DashboardAdmin sessionToken={props.sessionToken}/>
         </Route>
         <Route exact path="/product_view/:id" component={VehicleView} />
       </Switch>

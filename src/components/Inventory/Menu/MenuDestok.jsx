@@ -7,8 +7,6 @@ import Select from "@material-ui/core/Select";
 import Grid from "@material-ui/core/Grid";
 import FilterData from "../Carts/FilterData";
 import NofilterData from "../Carts/NofilterData";
-import Yearandmake from "./year&model.json";
-import {yellow} from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   button: {

@@ -29,7 +29,7 @@ const Auth = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const [letter, setLetter] = useState(true);
 
-  const LoginTrue = isLogin ? <Login /> : <Signup />;
+  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : <Signup updateToken={props.updateToken}/>;
   const LetterTrue = letter ? "Register Now" : "Sign In";
 
   function Toggle(e) {

@@ -1,9 +1,9 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router";
 import {makeStyles} from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -11,7 +11,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles({
   root: {
@@ -24,8 +25,22 @@ const useStyles = makeStyles({
 });
 
 const Login = (props) => {
+  const history = useHistory();
   const classes = useStyles();
   const [Email, setEmail] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const [errorHandle, setErrorHandle] = useState("");
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
   const [values, setValues] = React.useState({
     password: "",
@@ -66,10 +81,24 @@ const Login = (props) => {
     fetch("http://localhost:3000/user/signin", requestOptions)
       .then((response) => response.json())
       .then((result) => {
+        props.updateToken(result.sessionToken);
         console.log(result.sessionToken);
-        console.log(result)
+        console.log(result);
+        let token = result.sessionToken;
+        if (token === undefined) {
+          setErrorHandle(result.error);
+          handleClick(true);
+          localStorage.clear();
+        } else {
+          routeChange();
+        }
       })
       .catch((error) => console.log("error", error));
+  };
+
+  const routeChange = () => {
+    let path = "/adminArea";
+    history.push(path);
   };
 
   return (
@@ -120,6 +149,16 @@ const Login = (props) => {
           </Button>
         </form>
       </CardContent>
+      <Snackbar
+        anchorOrigin={{vertical: "top", horizontal: "center"}}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} variant="filled" severity="error">
+          {errorHandle}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

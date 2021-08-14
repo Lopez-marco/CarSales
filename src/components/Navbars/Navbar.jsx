@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
-import MobileNavbar from "./MobileNavbar"
-import DestokNavbar from "./DestokNavbar"
+import React, {useState, useEffect} from "react";
+import {createStyles, makeStyles} from "@material-ui/core/styles";
+import MobileNavbar from "./MobileNavbar";
+import DestokNavbar from "./DestokNavbar";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) =>
       flexGrow: 1,
       marginLeft: theme.spacing(3),
     },
-    titletwo:{
+    titletwo: {
       color: "white",
       flexGrow: 1,
     },
@@ -47,19 +47,19 @@ const useStyles = makeStyles((theme) =>
     },
     mininavbar: {
       backgroundColor: "white",
-      width: "100%"
+      width: "100%",
     },
-    largenavbar:{
+    largenavbar: {
       backgroundColor: "white",
-      width: "100%"
+      width: "100%",
     },
     search: {
       color: "black",
     },
-    tool:{
+    tool: {
       backgroundColor: "#323232",
       minHeight: 30,
-    }
+    },
   })
 );
 
@@ -82,7 +82,17 @@ const Navbar = (props) => {
     });
   }, []);
 
-  const Navbar = drawerActive ? <MobileNavbar /> : <DestokNavbar />;
+  const Navbar = drawerActive ? (
+    <MobileNavbar
+      sessionToken={props.sessionToken}
+      clearToken={props.clearToken}
+    />
+  ) : (
+    <DestokNavbar
+      sessionToken={props.sessionToken}
+      clearToken={props.clearToken}
+    />
+  );
 
   return <div className={classes.root}>{Navbar}</div>;
 };

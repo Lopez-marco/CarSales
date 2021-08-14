@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {useHistory} from "react-router";
 import {makeStyles} from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
@@ -10,6 +11,8 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,9 +25,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignIn = (props) => {
+  const history = useHistory();
   const classes = useStyles();
-
   const [Email, setEmail] = useState("");
+  const [open, setOpen] = React.useState(false);
+  const [errorHandle, setErrorHandle] = useState("");
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
   const [values, setValues] = React.useState({
     password: "",
@@ -65,10 +81,24 @@ const SignIn = (props) => {
     fetch("http://localhost:3000/user/signup", requestOptions)
       .then((response) => response.json())
       .then((result) => {
+        props.updateToken(result.sessionToken);
         console.log(result.sessionToken);
         console.log(result)
+        let token = result.sessionToken;
+        if (token === undefined) {
+          setErrorHandle(result.error);
+          handleClick(true);
+          localStorage.clear();
+        } else {
+          routeChange();
+        }
       })
       .catch((error) => console.log("error", error));
+  };
+
+  const routeChange = () => {
+    let path = "/adminArea";
+    history.push(path);
   };
 
   return (
@@ -118,7 +148,17 @@ const SignIn = (props) => {
             Sign Up
           </Button>
         </form>
-      </CardContent>{" "}
+      </CardContent>
+      <Snackbar
+        anchorOrigin={{vertical: "top", horizontal: "center"}}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} variant="filled" severity="error">
+          {errorHandle}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
