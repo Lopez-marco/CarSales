@@ -43,8 +43,8 @@ const AddVehicle = (props) => {
   const [price, setPrice] = useState("");
   const [color, setColor] = useState("");
   const [millage, setMillage] = useState("");
-  const [setPhoto] = useState({power: []});
-  const [setDescription] = useState("");
+  const [photo, setPhoto] = useState({power: []});
+  const [description, setDescription] = useState("");
   const [image, setImage] = useState({power: []});
   const [loading, setLoading] = useState("");
   const history = useHistory();
@@ -91,7 +91,7 @@ const AddVehicle = (props) => {
         setPrice("");
         setMillage("");
         setColor("");
-        setPhoto("");
+        setPhoto(image);
         setDescription("");
         routeChange();
       });

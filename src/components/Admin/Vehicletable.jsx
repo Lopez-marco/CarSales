@@ -77,7 +77,7 @@ const Vehicletable = (props) => {
               <StyledTableRow key={item.year}>
                 <StyledTableCell>{item.id}</StyledTableCell>
                 <StyledTableCell>
-                  <img alt={item.make} src={item.photo[0]} style={{width: "75px"}} />
+                  <img alt={item.make} src={item.photo.power[0]} style={{width: "75px"}} />
                 </StyledTableCell>
                 <StyledTableCell>{item.year}</StyledTableCell>
                 <StyledTableCell>{item.make}</StyledTableCell>

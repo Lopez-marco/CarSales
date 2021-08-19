@@ -3,7 +3,8 @@ import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
 
 const CarouselComponents = (props) => {
-  const images = props.images.map((number) => ({
+  console.log(props.images.power)
+  const images = props.images.power.map((number) => ({
     src: `${number}`,
     sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
   }));

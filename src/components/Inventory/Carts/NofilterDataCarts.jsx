@@ -12,33 +12,36 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    // 
     margin: "10px",
     [theme.breakpoints.up("sm")]: {
-      width: 360,
+      width: 350,
     },
     [theme.breakpoints.up("md")]: {
-      width: 300,
+      width: 256,
+      height: "405px",
     },
     [theme.breakpoints.up("lg")]: {
-      width: 260,
+      width: 256,
+      height: "405px",
     },
     transition: "transform 0.15s ease-in-out",
     "&:hover": {transform: "scale3d(1.03, 1.03, 1)"},
   },
   image: {
     [theme.breakpoints.up("sm")]: {
-      width: 360,
-      height: "300px",
+      width: "350px",
+      height: "195px",
     },
     [theme.breakpoints.up("md")]: {
-      width: 300,
-      height: "250px",
+      width: "260px",
+      height: "146px",
     },
     [theme.breakpoints.up("lg")]: {
       width: "260px",
-      height: "200px",
+      height: "146px",
     },
-    objectFit: "cover",
+    objectFit: "contain",
     overflow: "hidden",
   },
   button: {
@@ -54,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
 const NofilterCards = (props) => {
   const classes = useStyles();
   const {year, make, model, price, photo, color, millage, vin, id} = props.vehicle;
+  console.log(photo.power[0])
   return (
     <div>
       <Grid
@@ -69,7 +73,7 @@ const NofilterCards = (props) => {
               className={classes.image}
               component="img"
               alt={make}
-              image={photo[0]}
+              image={photo.power[0]}
               title={make}
               />
         </ Link>
