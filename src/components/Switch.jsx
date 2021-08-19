@@ -7,6 +7,8 @@ import DashboardAdmin from "./Admin/Dashboard";
 import {Route, Switch} from "react-router-dom";
 import Auth from "./Auth/Auth";
 import VehicleView from "./Inventory/Vehicle/VehicleView";
+import AddVehicle from "./Admin/AddVehicle";
+import EditVehicles from "./Admin/EditVehicles";
 
 const SwitchLink = (props) => {
   const front = () => {
@@ -34,7 +36,11 @@ const SwitchLink = (props) => {
         <Route exact path="/adminarea">
             <DashboardAdmin sessionToken={props.sessionToken}/>
         </Route>
+        <Route exact path="/editvehicle/:id" component={EditVehicles}/>
         <Route exact path="/product_view/:id" component={VehicleView} />
+        <Route exact path="/vehicle/addavehicle">
+            <AddVehicle sessionToken={props.sessionToken}/>
+        </Route>
       </Switch>
     </div>
   );
