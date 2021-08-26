@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const SignIn = (props) => {
   const history = useHistory();
   const classes = useStyles();
-  const [Email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [open, setOpen] = React.useState(false);
   const [errorHandle, setErrorHandle] = useState("");
 
@@ -66,7 +66,7 @@ const SignIn = (props) => {
 
     var raw = JSON.stringify({
       user: {
-        Email: Email,
+        email: email,
         password: values.password,
       },
     });

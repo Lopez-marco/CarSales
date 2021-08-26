@@ -6,6 +6,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   backgroundColor: {
@@ -20,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  center: {
+    textDecoration: "none"
+  }
 }));
 
 const Main = (props) => {
@@ -30,6 +34,7 @@ const Main = (props) => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={1} lg={1}></Grid>
           <Grid item xs={12} md={5} lg={5}>
+          <Link to={"/inventory"} style={{textDecoration: "none"}}>
             <Card>
               <CardActionArea>
                 <CardContent className={classes.center}>
@@ -44,7 +49,7 @@ const Main = (props) => {
                     fill="none"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                  >
+                    >
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M3 21v-13l9 -4l9 4v13" />
                     <path d="M13 13h4v8h-10v-6h6" />
@@ -63,6 +68,7 @@ const Main = (props) => {
                 </CardContent>
               </CardActionArea>
             </Card>
+                    </Link>
           </Grid>
           <Grid item xs={12} md={1} lg={1}></Grid>
           <Grid item xs={12} md={4} lg={4}>

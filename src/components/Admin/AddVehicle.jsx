@@ -46,6 +46,9 @@ const AddVehicle = (props) => {
   const [photo, setPhoto] = useState({power: []});
   const [description, setDescription] = useState("");
   const [image, setImage] = useState({power: []});
+  const [condition, setCondition] = useState("");
+  const [bodystyle, setBodystyle] = useState("");
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState("");
   const history = useHistory();
 
@@ -67,6 +70,10 @@ const AddVehicle = (props) => {
         color: color,
         price: price,
         photo: image,
+        condition: condition,
+        bodystyle: bodystyle,
+        status: status,
+        views: 0,
         description: value,
       },
     });
@@ -83,7 +90,6 @@ const AddVehicle = (props) => {
       .then((results) => {
         console.log(token);
         console.log(results);
-
         setYear("");
         setMake("");
         setModel("");
@@ -92,6 +98,9 @@ const AddVehicle = (props) => {
         setMillage("");
         setColor("");
         setPhoto(image);
+        setCondition("");
+        setStatus("");
+        setBodystyle("");
         setDescription("");
         routeChange();
       });
@@ -146,7 +155,8 @@ const AddVehicle = (props) => {
           {image.power.length <= 0
             ? "No Vehicle"
             : image.power.map((item, index) => (
-                <img alt="Uploaded"
+                <img
+                  alt="Uploaded"
                   style={{
                     width: "125px",
                     height: "70px",
@@ -254,7 +264,7 @@ const AddVehicle = (props) => {
                         helperText="Please select Vehicle Make"
                       >
                         <MenuItem value="">None</MenuItem>
-                        <MenuItem value={"Alfa Romeo"}>Alfa Romeo</MenuItem>
+                        <MenuItem value={""}></MenuItem>
                         <MenuItem value={"Aston Martin"}>Aston Martin</MenuItem>
                         <MenuItem value={"Audi"}>Audi</MenuItem>
                         <MenuItem value={"BMW"}>BMW</MenuItem>
@@ -312,10 +322,76 @@ const AddVehicle = (props) => {
                     </Grid>
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <TextField
-                        id="standard-basic"
+                        className={classes.year}
+                        select
                         label="Color"
+                        // value={currency}
                         onChange={(e) => setColor(e.target.value)}
-                      />
+                        helperText="Please select Vehicle Color"
+                      >
+                        <MenuItem value="">None</MenuItem>
+                        <MenuItem value={"White"}>White</MenuItem>
+                        <MenuItem value={"Yellow"}>Yellow</MenuItem>
+                        <MenuItem value={"Red"}>Red</MenuItem>
+                        <MenuItem value={"Silver"}>Silver</MenuItem>
+                        <MenuItem value={"Gray"}>Gray</MenuItem>
+                        <MenuItem value={"Olive"}>Olive</MenuItem>
+                        <MenuItem value={"Marron"}>Marron</MenuItem>
+                        <MenuItem value={"Green"}>Green</MenuItem>
+                        <MenuItem value={"Teal"}>Teal</MenuItem>
+                        <MenuItem value={"Blue"}>Blue</MenuItem>
+                        <MenuItem value={"Navy"}>Navy</MenuItem>
+                        <MenuItem value={"Black"}>Black</MenuItem>
+                        <MenuItem value={"Other"}>Other</MenuItem>
+                      </TextField>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                      <TextField
+                        className={classes.year}
+                        select
+                        label="Condition"
+                        // value={currency}
+                        onChange={(e) => setCondition(e.target.value)}
+                        helperText="Please select Vehicle Condition"
+                      >
+                        <MenuItem value="">None</MenuItem>
+                        <MenuItem value={"New"}>New</MenuItem>
+                        <MenuItem value={"Used"}>Used Vehicle</MenuItem>
+                      </TextField>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                      <TextField
+                        className={classes.year}
+                        select
+                        label="Body Style"
+                        // value={currency}
+                        onChange={(e) => setBodystyle(e.target.value)}
+                        helperText="Please select Vehicle Body Style"
+                      >
+                        <MenuItem value="">None</MenuItem>
+                        <MenuItem value={"Sedan"}>Sedan</MenuItem>
+                        <MenuItem value={"SUV"}>SUV</MenuItem>
+                        <MenuItem value={"Truck"}>Truck</MenuItem>
+                        <MenuItem value={"Mini Van"}>Mini Van </MenuItem>
+                        <MenuItem value={"Compact"}>Compact</MenuItem>
+                        <MenuItem value={"Coupe"}>Coupe</MenuItem>
+                        <MenuItem value={"Convertible"}>Convertible</MenuItem>
+                        <MenuItem value={"Wagon"}>Wagon</MenuItem>
+                        <MenuItem value={"HatchBack"}>Hatchback</MenuItem>
+                      </TextField>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                      <TextField
+                        className={classes.year}
+                        select
+                        label="Status of vehicle"
+                        onChange={(e) => setStatus(e.target.value)}
+                        helperText="Please select Vehicle Status"
+                      >
+                        <MenuItem value="">None</MenuItem>
+                        <MenuItem value={"On Sale"}>On sale</MenuItem>
+                        <MenuItem value={"Sold"}>Sold </MenuItem>
+                      </TextField>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <CurrencyTextField
@@ -323,7 +399,6 @@ const AddVehicle = (props) => {
                         variant="standard"
                         value={value}
                         currencySymbol="$"
-                        //minimumValue="0"
                         outputFormat="string"
                         decimalCharacter="."
                         digitGroupSeparator=","
@@ -362,9 +437,6 @@ const AddVehicle = (props) => {
                     </Grid>
                     {/* <Grid item xs={12}>
                       hello
-                      </Grid>
-                      <Grid item xs={12}>
-                      hello
                     </Grid>*/}
                   </Grid>
                   <Button type="submit">Click to Submit</Button>
@@ -379,3 +451,20 @@ const AddVehicle = (props) => {
 };
 
 export default AddVehicle;
+
+// White
+// Yellow
+// Fuchsia
+// Red
+// Silver
+// Gray
+// Olive
+// Purple
+// Maroon
+// Aqua
+// Lime
+// Teal
+// Green
+// Blue
+// Navy
+// Black

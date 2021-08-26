@@ -68,6 +68,7 @@ const Vehicletable = (props) => {
               <StyledTableCell>Make</StyledTableCell>
               <StyledTableCell>Model</StyledTableCell>
               <StyledTableCell>Price</StyledTableCell>
+              <StyledTableCell>Views</StyledTableCell>
               <StyledTableCell>Status</StyledTableCell>
               <StyledTableCell>Actions</StyledTableCell>
             </TableRow>
@@ -83,6 +84,7 @@ const Vehicletable = (props) => {
                 <StyledTableCell>{item.make}</StyledTableCell>
                 <StyledTableCell>{item.model}</StyledTableCell>
                 <StyledTableCell>${item.price}</StyledTableCell>
+                <StyledTableCell>{item.views}</StyledTableCell>
                 <StyledTableCell>Enable</StyledTableCell>
                 <StyledTableCell>
                   <ActionsButton vehicle={item} sessionToken={props.sessionToken} handleTable={handleTable} />

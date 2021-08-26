@@ -57,9 +57,10 @@ const MenuDestok = (props) => {
             paddingRight: 0,
             marginTop: 15,
             marginBottom: 15,
+            textAlign: "center"
           }}
         >
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} >
             <InputLabel id="demo-controlled-open-select-label">Year</InputLabel>
             <Select name="year" onChange={handleData}>
               <MenuItem value="">
@@ -154,6 +155,49 @@ const MenuDestok = (props) => {
               <MenuItem value={"Volvo"}>Volvo</MenuItem>
             </Select>
           </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-controlled-open-select-label">
+              Condition
+            </InputLabel>
+            <Select
+              labelId="demo-controlled-open-select-label"
+              id="demo-controlled-open-select"
+              name="condition" onChange={handleData}
+              >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"New"}>New</MenuItem>
+            <MenuItem value={"Used"}>Used Vehicle</MenuItem>
+            </Select>
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-controlled-open-select-label">
+              Exterior Color
+            </InputLabel>
+            <Select
+              labelId="demo-controlled-open-select-label"
+              id="demo-controlled-open-select"
+              name="color" onChange={handleData}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"White"}>White</MenuItem>
+            <MenuItem value={"Yellow"}>Yellow</MenuItem>
+            <MenuItem value={"Red"}>Red</MenuItem>
+            <MenuItem value={"Silver"}>Silver</MenuItem>
+            <MenuItem value={"Gray"}>Gray</MenuItem>
+            <MenuItem value={"Olive"}>Olive</MenuItem>
+            <MenuItem value={"Marron"}>Marron</MenuItem>
+            <MenuItem value={"Green"}>Green</MenuItem>
+            <MenuItem value={"Teal"}>Teal</MenuItem>
+            <MenuItem value={"Blue"}>Blue</MenuItem>
+            <MenuItem value={"Navy"}>Navy</MenuItem>
+            <MenuItem value={"Black"}>Black</MenuItem>
+            <MenuItem value={"Other"}>Other</MenuItem>
+            </Select>
+          </FormControl>
           {/* <FormControl className={classes.formControl}>
             <InputLabel id="demo-controlled-open-select-label">
               Model
@@ -172,24 +216,6 @@ const MenuDestok = (props) => {
               <MenuItem value={30}>2012</MenuItem>
             </Select>
           </FormControl> */}
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-controlled-open-select-label">
-              Condition
-            </InputLabel>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              //   value={age}
-              //   onChange={handleChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>2010</MenuItem>
-              <MenuItem value={20}>2011</MenuItem>
-              <MenuItem value={30}>2012</MenuItem>
-            </Select>
-          </FormControl>
           {/* <FormControl className={classes.formControl}>
             <InputLabel id="demo-controlled-open-select-label">
               Price
@@ -226,24 +252,6 @@ const MenuDestok = (props) => {
               <MenuItem value={30}>2012</MenuItem>
             </Select>
           </FormControl> */}
-          <FormControl className={classes.formControl}>
-            <InputLabel id="demo-controlled-open-select-label">
-              Exterior Color
-            </InputLabel>
-            <Select
-              labelId="demo-controlled-open-select-label"
-              id="demo-controlled-open-select"
-              //   value={age}
-              //   onChange={handleChange}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>2010</MenuItem>
-              <MenuItem value={20}>2011</MenuItem>
-              <MenuItem value={30}>2012</MenuItem>
-            </Select>
-          </FormControl>
         </Grid>
         <Grid
           item

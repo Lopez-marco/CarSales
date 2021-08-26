@@ -31,8 +31,8 @@ function App() {
       <Router>
       <Navbar sessionToken={sessionToken} clearToken={clearToken} />
       <Switch updateToken={updateToken} sessionToken={sessionToken}/>
-      </Router>
       <Footer />
+      </Router>
     </div>
   );
 }

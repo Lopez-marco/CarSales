@@ -77,7 +77,7 @@ const menuList = (props) => {
       </List>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folders">
-        <ListItem button>
+        {/* <ListItem button component="a" href="/admin/users">
           <ListItemIcon>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ const menuList = (props) => {
             </svg>
           </ListItemIcon>
           <ListItemText primary="Users" />
-        </ListItem>
+        </ListItem> */}
         <ListItem button component="a" href="/">
           <ListItemIcon>
             <svg

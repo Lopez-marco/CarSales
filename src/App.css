@@ -27,8 +27,8 @@ body{
 
 .carousel-container {
   width: 100%;
-  height: calc(50vw * 0.8);
-  border-radius: 8px;
+  height: calc(60vw * 0.8);
+  border-radius: 15px;
   will-change: transform;
   mask-image: -webkit-radial-gradient(white, black);
   box-sizing: border-box;

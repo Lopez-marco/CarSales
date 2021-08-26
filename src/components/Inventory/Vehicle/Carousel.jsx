@@ -6,7 +6,7 @@ const CarouselComponents = (props) => {
   console.log(props.images.power)
   const images = props.images.power.map((number) => ({
     src: `${number}`,
-    sizes: '(max-width: 1000px) 400px, (max-width: 2000px) 700px, 1000px',
+    sizes: '(max-width: 100px) 400px, (max-width: 2000px) 700px, 1000px',
   }));
 
   return (

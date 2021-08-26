@@ -13,6 +13,7 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
 import BusinessIcon from "@material-ui/icons/Business";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   Letter: {
     color: "white",
     textAlign: "center"
-
   },
   padding: {
     paddingTop: "35px",
@@ -54,53 +54,61 @@ const Footer = (props) => {
           </Grid>
           <Grid item xs={12} sm={3} md={3} lg={4} className={classes.Letter}>
             <List>
+            <Link to="/" style={{textDecoration: "none", color: "white"}}>
               <ListItem button>
                 <ListItemIcon>
                   <ChevronRightIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="Home" />
               </ListItem>
-              <ListItem button>
+            </Link>
+            <Link to="/inventory" style={{textDecoration: "none", color: "white"}}>
+              <ListItem button >
                 <ListItemIcon>
                   <ChevronRightIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="Inventory" />
               </ListItem>
-              <ListItem button>
+            </Link>
+            <Link to="/" style={{textDecoration: "none", color: "white"}}>
+              <ListItem button >
                 <ListItemIcon>
                   <ChevronRightIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="About us" />
-              </ListItem>{" "}
+              </ListItem>
+            </Link>
+            <Link to="/" style={{textDecoration: "none", color: "white"}}>
               <ListItem button>
                 <ListItemIcon>
                   <ChevronRightIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="Contact us" />
               </ListItem>
+            </Link>
             </List>
           </Grid>
           <Grid item xs={12} sm={12} md={3} lg={4} className={classes.Letter}>
             <List>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <BusinessIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="123 Address Ave" />
               </ListItem>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <PhoneIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="(555)-555-555" />
               </ListItem>
-              <ListItem button>
+              <ListItem>
                 <ListItemIcon>
                   <AccessTimeIcon className={classes.icons} />
                 </ListItemIcon>
                 <ListItemText primary="10:00 AM To 5:00 PM" />
-              </ListItem>{" "}
-              <ListItem button>
+              </ListItem>
+              <ListItem>
                 <ListItemIcon>
                   <EmailIcon className={classes.icons} />
                 </ListItemIcon>

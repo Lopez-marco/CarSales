@@ -15,6 +15,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import Logo from "../../assets/logo_size.jpg";
 import Paper from "@material-ui/core/Paper";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -162,18 +163,26 @@ const Navbar = (props) => {
           <Typography variant="h6" className={classes.title}>
             <img src={Logo} alt="Logo" />{" "}
           </Typography>
-          <Button color="inherit" className={classes.button} href="/">
+          <Link to="/" style={{textDecoration: "none"}}>
+          <Button color="inherit" className={classes.button}>
             <strong>Home</strong>
           </Button>
-          <Button color="inherit" className={classes.button} href="/inventory">
+          </Link>
+          <Link to="/inventory" style={{textDecoration: "none"}}>
+          <Button color="inherit" className={classes.button}>
             <strong>Inventory</strong>
           </Button>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
           <Button color="inherit" className={classes.button} href="/">
             <strong>About Us</strong>
           </Button>
+          </Link>
+          <Link to="/" style={{textDecoration: "none"}}>
           <Button color="inherit" className={classes.button} href="/">
             <strong>Contact Us</strong>
           </Button>
+          </Link>
           <Button
             color="inherit"
             className={classes.button}

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
       height: "405px",
     },
     [theme.breakpoints.up("lg")]: {
-      width: 256,
+      width: 246,
       height: "405px",
     },
     transition: "transform 0.15s ease-in-out",
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       width: "260px",
       height: "146px",
     },
-    objectFit: "contain",
+    // objectFit: "contain",
     overflow: "hidden",
   },
   button: {
