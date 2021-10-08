@@ -70,7 +70,7 @@ const Footer = (props) => {
                 <ListItemText primary="Inventory" />
               </ListItem>
             </Link>
-            <Link to="/" style={{textDecoration: "none", color: "white"}}>
+            <Link to="/aboutus" style={{textDecoration: "none", color: "white"}}>
               <ListItem button >
                 <ListItemIcon>
                   <ChevronRightIcon className={classes.icons} />
@@ -78,7 +78,7 @@ const Footer = (props) => {
                 <ListItemText primary="About us" />
               </ListItem>
             </Link>
-            <Link to="/" style={{textDecoration: "none", color: "white"}}>
+            <Link to="/contacus" style={{textDecoration: "none", color: "white"}}>
               <ListItem button>
                 <ListItemIcon>
                   <ChevronRightIcon className={classes.icons} />

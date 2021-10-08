@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import MenuDestok from "./Menu/MenuDestok";
+import {Helmet} from "react-helmet";
 
 const Dashboard = (props) => {
-
   const [vehicle, setVehicle] = useState([]);
 
   const fetchVehicle = () => {
@@ -19,13 +19,17 @@ const Dashboard = (props) => {
   };
 
   useEffect(() => {
-    fetchVehicle();    
+    fetchVehicle();
   }, []);
-
 
   return (
     <div>
-          <MenuDestok vehicle={vehicle}/>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Inventory | {props.website}</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <MenuDestok vehicle={vehicle} website={props.website} />
     </div>
   );
 };

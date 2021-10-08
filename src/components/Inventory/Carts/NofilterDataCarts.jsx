@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 const NofilterCards = (props) => {
   const classes = useStyles();
   const {year, make, model, price, photo, color, millage, vin, id} = props.vehicle;
-  console.log(photo.power[0])
+  console.log(photo)
   return (
     <div>
       <Grid

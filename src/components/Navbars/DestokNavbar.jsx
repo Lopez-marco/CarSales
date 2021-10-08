@@ -173,12 +173,12 @@ const Navbar = (props) => {
             <strong>Inventory</strong>
           </Button>
           </Link>
-          <Link to="/" style={{textDecoration: "none"}}>
-          <Button color="inherit" className={classes.button} href="/">
+          <Link to="/aboutus" style={{textDecoration: "none"}}>
+          <Button color="inherit" className={classes.button}>
             <strong>About Us</strong>
           </Button>
           </Link>
-          <Link to="/" style={{textDecoration: "none"}}>
+          <Link to="/contacus" style={{textDecoration: "none"}}>
           <Button color="inherit" className={classes.button} href="/">
             <strong>Contact Us</strong>
           </Button>

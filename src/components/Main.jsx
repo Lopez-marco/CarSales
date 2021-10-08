@@ -109,6 +109,7 @@ const Main = (props) => {
           <Grid item xs={12} md={1} lg={1}></Grid>
         </Grid>
       </Container>
+      <div id="about"></div>
     </div>
   );
 };

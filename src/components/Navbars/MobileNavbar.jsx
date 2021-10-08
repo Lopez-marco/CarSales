@@ -204,14 +204,18 @@ const Navbar = (props) => {
                 </Typography>
               </ListItem>
             </Link>
+            <Link to="/aboutus" className={classes.links}>
             <ListItem key={2} button divider>
               <InfoIcon style={{color: "#DE3736", marginRight: "10px"}} />{" "}
               <Typography variant="subtitle1">About us</Typography>
             </ListItem>
+            </Link>
+            <Link to="/contacus" className={classes.links}>
             <ListItem key={3} button divider>
               <MailIcon style={{color: "#DE3736", marginRight: "10px"}} />
               <Typography variant="subtitle1">Contact us</Typography>
             </ListItem>
+            </Link>
             {LoginTrue}
           </List>
         </div>

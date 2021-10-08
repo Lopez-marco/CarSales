@@ -5,11 +5,21 @@ import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import CarKeys from "../assets/carview.jpg"
 
 const useStyles = makeStyles({
   title: {
     textAlign: "center",
     paddingBottom: "15px",
+  },
+  paragraph: {
+    fontSize: "14px",
+    letterSpacing: "3px",
+    textAlign: "center",
+    paddingBottom: "15px",
+    paddingTop: "50px",
+    paddingLeft: "55px",
+    paddingRight: "55px",
   },
   center: {
     textAlign: "center",
@@ -22,6 +32,10 @@ const useStyles = makeStyles({
   padding:{
     paddingTop: "55px",
     paddingBottom: "55px"
+  },
+  image: {
+    width: 400,
+    borderRadius: 90
   }
 });
 
@@ -37,9 +51,9 @@ const WhyUs = (props) => {
               Why Choose Us?
             </Typography>
           </Grid>
-          <Grid item xs={12} md={2} lg={2}></Grid>
-          <Grid item xs={12} md={8} lg={8}>
-            <Typography variant="body2" gutterBottom className={classes.title}>
+          {/* <Grid item xs={12} md={2} lg={2}></Grid> */}
+          <Grid item xs={12} md={6} lg={6}>
+            <Typography variant="body2" gutterBottom className={classes.paragraph}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
               dignissim laoreet purus, vel lacinia odio aliquam at. Morbi mi
               nisi, rutrum a lacus et, iaculis gravida libero. Donec semper
@@ -48,7 +62,7 @@ const WhyUs = (props) => {
               sit amet mi nulla.
             </Typography>
           </Grid>
-          <Grid item xs={12} md={2} lg={2}></Grid>
+          <Grid item xs={12} md={6} lg={6}><img src={CarKeys} alt="imageshow" className={classes.image} /> </Grid>
           <Grid item xs={12} md={4} lg={4}>
             <Card>
               <CardActionArea>

@@ -1,11 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import MenuList from "./menuList";
-import Divider from "@material-ui/core/Divider";
-import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import CurrencyTextField from "@unicef/material-ui-currency-textfield";
@@ -15,6 +10,8 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import {useHistory} from "react-router";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,17 +39,15 @@ const EditVehiclesTrue = (props) => {
   const [condition, setCondition] = useState(props.vehicle[0].condition);
   const [bodystyle, setBodystyle] = useState(props.vehicle[0].bodystyle);
   const [status, setStatus] = useState(props.vehicle[0].status);
-  const [views, setViews] = useState(props.vehicle[0].views);
+  const [views] = useState(props.vehicle[0].views);
   const [loading, setLoading] = useState("");
   const history = useHistory();
+  const [state, setState] = useState(props.vehicle[0].enable);
 
+  const handleChange = (event) => {
+    setState(event.target.checked);
+  };
 
-  const counting = () => {
-    
-    // var count = props.vehicle[0].views
-    // setViews(++count)
-    // console.log(views)
-  } 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(localStorage.getItem("token"));
@@ -74,6 +69,7 @@ const EditVehiclesTrue = (props) => {
         condition: condition,
         bodystyle: bodystyle,
         status: status,
+        enable: state,
         views: views,
         description: description,
       },
@@ -114,10 +110,8 @@ const EditVehiclesTrue = (props) => {
     history.push(path);
   };
 
-  const [value, setValue] = useState("");
   const handleOnChange = (e, editor) => {
     const data = editor.getData();
-    // setValue(data);
     setDescription(data);
   };
 
@@ -175,9 +169,7 @@ const EditVehiclesTrue = (props) => {
     }
     return "";
   }
-  useEffect(() => {
-    counting()
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <form
@@ -398,6 +390,20 @@ const EditVehiclesTrue = (props) => {
             decimalCharacter="."
             digitGroupSeparator=","
             onChange={(event, value) => setPrice(value)}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={4} lg={4}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state}
+                onChange={handleChange}
+                color="primary"
+                name="checkedB"
+                inputProps={{"aria-label": "primary checkbox"}}
+              />
+            }
+            label="Enable Vehicle"
           />
         </Grid>
         <Grid item xs={12} sm={12} md={12} lg={12}>

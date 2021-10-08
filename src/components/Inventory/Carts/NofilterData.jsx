@@ -4,6 +4,7 @@ import NofilterDataCarts from "./NofilterDataCarts";
 import Paper from "@material-ui/core/Paper";
 import NoVehicle from "../../../assets/NoVehicle.jpg";
 import Typography from '@material-ui/core/Typography';
+import useInfiniteScroll from '@closeio/use-infinite-scroll';
 
 const NofilterData = (props) => {
   return (

@@ -15,6 +15,9 @@ import Dropzone from "react-dropzone";
 import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import {useHistory} from "react-router";
+import {Helmet} from "react-helmet";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +54,12 @@ const AddVehicle = (props) => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState("");
   const history = useHistory();
+  const [state, setState] = useState(false);
+
+  const handleChange = (event) => {
+    setState(event.target.checked);
+  };
+  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,6 +84,7 @@ const AddVehicle = (props) => {
         status: status,
         views: 0,
         description: value,
+        enable: state,
       },
     });
 
@@ -175,6 +185,11 @@ const AddVehicle = (props) => {
   return (
     <div>
       <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Add Vehicle | {props.website}</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
         <Container maxWidth="lg">
           <Grid container spacing={3} className={classes.root}>
             <Grid item xs={12} sm={12} md={4} lg={4}>
@@ -190,7 +205,7 @@ const AddVehicle = (props) => {
                 </Grid>
                 <form
                   className={classes.root}
-                  noValidate
+                  // noValidate
                   autoComplete="off"
                   onSubmit={handleSubmit}
                 >
@@ -200,6 +215,7 @@ const AddVehicle = (props) => {
                         id="standard-select-currency"
                         select
                         label="Year"
+                        required={true}
                         // value={currency}
                         onChange={(e) => setYear(e.target.value)}
                         helperText="Please select Vehicle Year"
@@ -259,7 +275,7 @@ const AddVehicle = (props) => {
                         id="standard-select-currency"
                         select
                         label="Make"
-                        // value={currency}
+                        required={true}
                         onChange={(e) => setMake(e.target.value)}
                         helperText="Please select Vehicle Make"
                       >
@@ -303,6 +319,7 @@ const AddVehicle = (props) => {
                       <TextField
                         id="standard-basic"
                         label="Model"
+                        required={true}
                         onChange={(e) => setModel(e.target.value)}
                       />
                     </Grid>
@@ -310,6 +327,7 @@ const AddVehicle = (props) => {
                       <TextField
                         id="standard-basic"
                         label="VIN #"
+                        required={true}
                         onChange={(e) => setVin(e.target.value)}
                       />
                     </Grid>
@@ -317,6 +335,7 @@ const AddVehicle = (props) => {
                       <TextField
                         id="standard-basic"
                         label="Millage"
+                        required={true}
                         onChange={(e) => setMillage(e.target.value)}
                       />
                     </Grid>
@@ -325,6 +344,7 @@ const AddVehicle = (props) => {
                         className={classes.year}
                         select
                         label="Color"
+                        required={true}
                         // value={currency}
                         onChange={(e) => setColor(e.target.value)}
                         helperText="Please select Vehicle Color"
@@ -349,6 +369,7 @@ const AddVehicle = (props) => {
                       <TextField
                         className={classes.year}
                         select
+                        required={true}
                         label="Condition"
                         // value={currency}
                         onChange={(e) => setCondition(e.target.value)}
@@ -363,6 +384,7 @@ const AddVehicle = (props) => {
                       <TextField
                         className={classes.year}
                         select
+                        required={true}
                         label="Body Style"
                         // value={currency}
                         onChange={(e) => setBodystyle(e.target.value)}
@@ -384,6 +406,7 @@ const AddVehicle = (props) => {
                       <TextField
                         className={classes.year}
                         select
+                        required={true}
                         label="Status of vehicle"
                         onChange={(e) => setStatus(e.target.value)}
                         helperText="Please select Vehicle Status"
@@ -398,11 +421,26 @@ const AddVehicle = (props) => {
                         label="Amount"
                         variant="standard"
                         value={value}
+                        required={true}
                         currencySymbol="$"
                         outputFormat="string"
                         decimalCharacter="."
                         digitGroupSeparator=","
                         onChange={(event, value) => setPrice(value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                      <FormControlLabel
+                        control={
+                          <Switch
+                            checked={state.checkedB}
+                            onChange={handleChange}
+                            color="primary"
+                            name="checkedB"
+                            inputProps={{"aria-label": "primary checkbox"}}
+                          />
+                        }
+                        label="Enable Vehicle"
                       />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12}>

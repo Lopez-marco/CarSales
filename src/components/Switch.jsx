@@ -10,6 +10,7 @@ import VehicleView from "./Inventory/Vehicle/VehicleView";
 import AddVehicle from "./Admin/AddVehicle";
 import EditVehicles from "./Admin/EditVehicles";
 import GetallUsers from "./Admin/GetallUsers";
+import ContactUs from "./ContactUs";
 
 const SwitchLink = (props) => {
   const front = () => {
@@ -29,21 +30,27 @@ const SwitchLink = (props) => {
           {front()}
         </Route>
         <Route exact path="/inventory">
-            <Dashboard />
+            <Dashboard website={props.website} />
         </Route>
         <Route exact path="/login">
-            <Auth updateToken={props.updateToken}/>
+            <Auth updateToken={props.updateToken} />
         </Route>
         <Route exact path="/adminarea">
-            <DashboardAdmin sessionToken={props.sessionToken}/>
+            <DashboardAdmin sessionToken={props.sessionToken} website={props.website}/>
         </Route>
-        <Route exact path="/editvehicle/:id" component={EditVehicles}/>
+        <Route exact path="/editvehicle/:id" component={EditVehicles} />
         <Route exact path="/product_view/:id" component={VehicleView} />
-        <Route exact path="/vehicle/addavehicle">
-            <AddVehicle sessionToken={props.sessionToken}/>
+        <Route exact path="/vehicle/addavehicle" website={props.website}>
+            <AddVehicle sessionToken={props.sessionToken} website={props.website}/>
         </Route>
         <Route exact path="/admin/users">
             <GetallUsers sessionToken={props.sessionToken}/>
+        </Route>
+        <Route exact path="/contacus">
+            <ContactUs/>
+        </Route>
+        <Route exact path="/aboutus">
+            <WhyUs />
         </Route>
       </Switch>
     </div>

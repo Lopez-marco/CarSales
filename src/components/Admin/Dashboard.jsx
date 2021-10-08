@@ -7,6 +7,7 @@ import MenuList from "./menuList";
 import Vehicletable from "./Vehicletable";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
+import {Helmet} from "react-helmet";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +27,11 @@ const Dashboard = (props) => {
   const Menu = () => {
     return (
       <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Admin | {props.website}</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
         <Container maxWidth="lg">
           <Grid container spacing={3} className={classes.root}>
             <Grid item xs={12}></Grid>

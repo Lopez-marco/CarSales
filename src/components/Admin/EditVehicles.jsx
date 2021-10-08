@@ -6,15 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import MenuList from "./menuList";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import CurrencyTextField from "@unicef/material-ui-currency-textfield";
-import Button from "@material-ui/core/Button";
-import {CKEditor} from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import Dropzone from "react-dropzone";
-import axios from "axios";
-import {useHistory} from "react-router";
 import EditVehiclesTrue from "./EditVehiclestrue";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,8 +24,20 @@ const EditVehicles = (props) => {
   const [vehicle, setVehicle] = useState([]);
 
   let id = props.match.params.id;
-
-  const GetData = () => {
+  // const GetData = () => {
+  //   fetch(`http://localhost:3000/vehicle/get/${id}`, {
+  //     method: "GET",
+  //     headers: new Headers({
+  //       "Content-Type": "application/json",
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((results) => {
+  //       console.log(results);
+  //       setVehicle(results);
+  //     });
+  // };
+  useEffect(() => {
     fetch(`http://localhost:3000/vehicle/get/${id}`, {
       method: "GET",
       headers: new Headers({
@@ -46,13 +49,10 @@ const EditVehicles = (props) => {
         console.log(results);
         setVehicle(results);
       });
-  };
-  useEffect(() => {
-    GetData();
   }, []);
 
   const isthereData = () => {
-    return vehicle.length > 0 ? <EditVehiclesTrue vehicle={vehicle} /> : "Error Retribing Data";
+    return vehicle.length > 0 ? <EditVehiclesTrue vehicle={vehicle} /> : "Error Retriving Data";
   };
 
 

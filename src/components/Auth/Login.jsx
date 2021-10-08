@@ -113,7 +113,7 @@ const Login = (props) => {
         </Typography>
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
           <FormControl className={classes.root}>
-            <InputLabel htmlFor="my-input">Email address</InputLabel>
+            <InputLabel label="Email" htmlFor="Email">Email address</InputLabel>
             <Input
               id="my-input"
               aria-describedby="my-helper-text"
