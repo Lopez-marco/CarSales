@@ -69,7 +69,7 @@ const EditVehiclesTrue = (props) => {
         condition: condition,
         bodystyle: bodystyle,
         status: status,
-        enable: state,
+        enable: true,
         views: views,
         description: description,
       },
@@ -392,7 +392,7 @@ const EditVehiclesTrue = (props) => {
             onChange={(event, value) => setPrice(value)}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={4}>
+        {/* <Grid item xs={12} sm={6} md={4} lg={4}>
           <FormControlLabel
             control={
               <Switch
@@ -405,7 +405,7 @@ const EditVehiclesTrue = (props) => {
             }
             label="Enable Vehicle"
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Dropzone
             className="dropzone"

@@ -16,6 +16,7 @@ import Logo from "../../assets/logo_size.jpg";
 import Paper from "@material-ui/core/Paper";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import { Link } from "react-router-dom";
+import { Nav } from "reactstrap";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -63,6 +64,7 @@ const useStyles = makeStyles((theme) =>
       minHeight: 30,
     },
     pad: {
+      color: "white",
       [theme.breakpoints.up("sm")]: {
         height: 85,
       },
@@ -99,6 +101,35 @@ const Navbar = (props) => {
         Login
       </Button>
     );
+
+    const NavTrue =
+    localStorage.getItem("nav") ? (
+null
+      ) : (
+        <>
+<Link to="/" style={{textDecoration: "none"}}>
+          <Button color="inherit" className={classes.button}>
+            <strong>Home</strong>
+          </Button>
+          </Link>
+          <Link to="/inventory" style={{textDecoration: "none"}}>
+          <Button color="inherit" className={classes.button}>
+            <strong>Inventory</strong>
+          </Button>
+          </Link>
+          <Link to="/aboutus" style={{textDecoration: "none"}}>
+          <Button color="inherit" className={classes.button}>
+            <strong>About Us</strong>
+          </Button>
+          </Link>
+          <Link to="/contacus" style={{textDecoration: "none",marginRight: "25px" }}>
+          <Button color="inherit" className={classes.button} href="/">
+            <strong>Contact Us</strong>
+          </Button>
+          </Link>
+        </>
+      );
+  
 
   return (
     <>
@@ -154,36 +185,13 @@ const Navbar = (props) => {
             <TwitterIcon fontSize="small" className={classes.home} />
           </IconButton>
           {LoginTrue}
-          {/* <Button className={classes.home} variant="outlined" href="/login">
-             <LockOpenIcon fontSize="small" className={classes.home} />
-             Login
-          </Button> */}
         </Toolbar>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             <img src={Logo} alt="Logo" />{" "}
           </Typography>
-          <Link to="/" style={{textDecoration: "none"}}>
-          <Button color="inherit" className={classes.button}>
-            <strong>Home</strong>
-          </Button>
-          </Link>
-          <Link to="/inventory" style={{textDecoration: "none"}}>
-          <Button color="inherit" className={classes.button}>
-            <strong>Inventory</strong>
-          </Button>
-          </Link>
-          <Link to="/aboutus" style={{textDecoration: "none"}}>
-          <Button color="inherit" className={classes.button}>
-            <strong>About Us</strong>
-          </Button>
-          </Link>
-          <Link to="/contacus" style={{textDecoration: "none"}}>
-          <Button color="inherit" className={classes.button} href="/">
-            <strong>Contact Us</strong>
-          </Button>
-          </Link>
-          <Button
+          {NavTrue}
+          {/* <Button
             color="inherit"
             className={classes.button}
             href="#contact"
@@ -195,7 +203,7 @@ const Navbar = (props) => {
               className={classes.home}
             />
             <strong>Search</strong>
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
       <Paper>

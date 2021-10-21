@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   Carousel,
   CarouselItem,
@@ -51,6 +51,10 @@ const Hero = (props) => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
+  
+  useEffect(() => {
+    localStorage.removeItem("nav")
+  }, []);
 
   const slides = items.map((item) => {
     return (

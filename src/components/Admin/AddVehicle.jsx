@@ -16,8 +16,6 @@ import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import {useHistory} from "react-router";
 import {Helmet} from "react-helmet";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,7 +82,7 @@ const AddVehicle = (props) => {
         status: status,
         views: 0,
         description: value,
-        enable: state,
+        enable: true,
       },
     });
 
@@ -429,7 +427,7 @@ const AddVehicle = (props) => {
                         onChange={(event, value) => setPrice(value)}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={6} md={4} lg={4}>
+                    {/* <Grid item xs={12} sm={6} md={4} lg={4}>
                       <FormControlLabel
                         control={
                           <Switch
@@ -442,7 +440,7 @@ const AddVehicle = (props) => {
                         }
                         label="Enable Vehicle"
                       />
-                    </Grid>
+                    </Grid> */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                       <Dropzone
                         className="dropzone"

@@ -29,17 +29,17 @@ const Auth = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const [letter, setLetter] = useState(true);
 
-  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : <Signup updateToken={props.updateToken}/>;
+  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : null;
   const LetterTrue = letter ? "Register Now" : "Sign In";
 
   function Toggle(e) {
     e.preventDefault();
     if (isLogin === true) {
       setIsLogin(false);
-      setLetter(false);
+      // setLetter(false);
     } else {
       setIsLogin(true);
-      setLetter(true);
+      // setLetter(true);
     }
   }
 
@@ -56,7 +56,7 @@ const Auth = (props) => {
                   onClick={(e) => Toggle(e)}
                   color="primary"
                 >
-                  {LetterTrue}
+                  {/* {LetterTrue} */}
                 </Button>
               </CardActions>
             </Card>

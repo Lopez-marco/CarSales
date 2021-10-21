@@ -12,25 +12,28 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import {Link} from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import UserActions from "./UserActions";
 
 const StyledTableCell = withStyles((theme) => ({
-    head: {
-      backgroundColor: "#323232",
-      color: theme.palette.common.white,
+  head: {
+    backgroundColor: "#323232",
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+    padding: 10,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
     },
-    body: {
-      fontSize: 14,
-      padding: 10,
-    },
-  }))(TableCell);
-  
-  const StyledTableRow = withStyles((theme) => ({
-    root: {
-      "&:nth-of-type(odd)": {
-        backgroundColor: theme.palette.action.hover,
-      },
-    },
-  }))(TableRow);
+  },
+}))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  button: {
+    float: "right",
+    marginBottom: "10px"
+  }
 }));
 
 const GetallUsers = (props) => {
@@ -51,11 +58,11 @@ const GetallUsers = (props) => {
     let token = localStorage.getItem("token");
     var myHeaders = new Headers();
     myHeaders.append("Authorization", token);
-    
+
     var requestOptions = {
-      method: 'GET',
+      method: "GET",
       headers: myHeaders,
-      redirect: 'follow'
+      redirect: "follow",
     };
 
     fetch("http://localhost:3000/user/all", requestOptions)
@@ -84,31 +91,38 @@ const GetallUsers = (props) => {
               Users
             </Typography>
             <Divider style={{marginBottom: 15}} />
+            <Link
+              to="/admin/users/addusers"
+              style={{textDecoration: "none", color: "black"}}
+            >
+              <Button variant="contained" color="primary" className={classes.button}>
+                Add a New user
+              </Button>
+            </Link>
             <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>ID #</StyledTableCell>
-              <StyledTableCell>Email</StyledTableCell>
-              <StyledTableCell></StyledTableCell>
-              <StyledTableCell></StyledTableCell>
-              <StyledTableCell>Actions</StyledTableCell> 
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.map((user) => (
-              <StyledTableRow key={user.email}>
-                <StyledTableCell>{user.id}</StyledTableCell>
-                 <StyledTableCell>{user.email}</StyledTableCell>
-                <StyledTableCell></StyledTableCell> 
-                <StyledTableCell>
-                </StyledTableCell>
-                <StyledTableCell>Enable</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+              <Table className={classes.table} aria-label="customized table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>ID #</StyledTableCell>
+                    <StyledTableCell>Email</StyledTableCell>
+                    <StyledTableCell>Name</StyledTableCell>
+                    <StyledTableCell>Role</StyledTableCell>
+                    <StyledTableCell>Actions</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {users.map((user) => (
+                    <StyledTableRow key={user.email}>
+                      <StyledTableCell>{user.id}</StyledTableCell>
+                      <StyledTableCell>{user.email}</StyledTableCell>
+                      <StyledTableCell>{user.firstName} {user.lastName}</StyledTableCell>
+                      <StyledTableCell>{user.usertype}</StyledTableCell>
+                      <StyledTableCell><UserActions user = {user} Getall ={Getall}/> </StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Grid>
         </Grid>
       </Container>

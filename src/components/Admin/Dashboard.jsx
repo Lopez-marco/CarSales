@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = (props) => {
   const classes = useStyles();
 
+  useEffect(() => {
+      localStorage.setItem("nav", "true")
+  }, []);
+
   const Menu = () => {
     return (
       <>
@@ -36,7 +40,7 @@ const Dashboard = (props) => {
           <Grid container spacing={3} className={classes.root}>
             <Grid item xs={12}></Grid>
             <Grid item xs={12} sm={12} md={4} lg={4}>
-              <MenuList />
+              <MenuList updateToken={props.updateToken}/>
             </Grid>
             <Grid item xs={12} sm={12} md={8} lg={8}>
               <Typography variant="h6" gutterBottom>
@@ -51,7 +55,7 @@ const Dashboard = (props) => {
     );
   };
 
-  const token = props.sessionToken ? Menu() : <NoTokenError />;
+  const token = props.sessionToken ? Menu() : null;
 
   return <div>{token}</div>;
 };

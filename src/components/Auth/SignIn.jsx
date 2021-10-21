@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router";
 import {makeStyles} from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,6 +13,8 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,8 +30,12 @@ const SignIn = (props) => {
   const history = useHistory();
   const classes = useStyles();
   const [email, setEmail] = useState("");
+  const [fistName, setFistName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [usertype, setUsertype] = useState("");
   const [open, setOpen] = React.useState(false);
   const [errorHandle, setErrorHandle] = useState("");
+  const [successhandle, setSuccessHandle] = useState("");
 
   const handleClick = () => {
     setOpen(true);
@@ -66,8 +72,11 @@ const SignIn = (props) => {
 
     var raw = JSON.stringify({
       user: {
+        firstName: fistName,
+        lastName: lastName,
         email: email,
         password: values.password,
+        usertype: usertype,
       },
     });
 
@@ -81,14 +90,15 @@ const SignIn = (props) => {
     fetch("http://localhost:3000/user/signup", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        props.updateToken(result.sessionToken);
+        // props.updateToken(result.sessionToken);
         console.log(result.sessionToken);
-        console.log(result)
+        console.log(result);
+        setSuccessHandle(result.message)
+        handleClick(true)
         let token = result.sessionToken;
         if (token === undefined) {
-          setErrorHandle(result.error);
           handleClick(true);
-          localStorage.clear();
+          // localStorage.clear();
         } else {
           routeChange();
         }
@@ -97,9 +107,10 @@ const SignIn = (props) => {
   };
 
   const routeChange = () => {
-    let path = "/adminArea";
+    let path = "/admin/users";
     history.push(path);
   };
+
 
   return (
     <div>
@@ -111,14 +122,57 @@ const SignIn = (props) => {
         >
           Sign up
         </Typography>
-        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <FormControl className={classes.root}>
+            <InputLabel htmlFor="my-input">First Name</InputLabel>
+            <Input
+              id="my-input"
+              aria-describedby="my-helper-text"
+              required={true}
+              onChange={(e) => setFistName(e.target.value)}
+            />
+          </FormControl>
+          <br />
+          <FormControl className={classes.root}>
+            <InputLabel htmlFor="my-input">Last Name</InputLabel>
+            <Input
+              id="my-input"
+              required={true}
+              aria-describedby="my-helper-text"
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </FormControl>
+          <br />
           <FormControl className={classes.root}>
             <InputLabel htmlFor="my-input">Email address</InputLabel>
             <Input
               id="my-input"
+              required={true}
               aria-describedby="my-helper-text"
               onChange={(e) => setEmail(e.target.value)}
             />
+          </FormControl>
+          <br />
+          <FormControl className={classes.root}>
+            <TextField
+              className={classes.year}
+              select
+              required={true}
+              label="User Type"
+              onChange={(e) => setUsertype(e.target.value)}
+              helperText="Please select Vehicle Status"
+            >
+              <MenuItem value="">None</MenuItem>
+              <MenuItem value={"admin"}>Admin</MenuItem>
+              <MenuItem value={"addvehicle"}>Employe</MenuItem>
+            </TextField>
+
+            {/* <InputLabel htmlFor="my-input">User Type</InputLabel>
+            <Input
+              id="my-input"
+              aria-describedby="my-helper-text"
+              onChange={(e) => setUsertype(e.target.value)}
+            /> */}
           </FormControl>
           <br />
           <FormControl>
@@ -129,6 +183,7 @@ const SignIn = (props) => {
               id="standard-adornment-password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
+              required={true}
               onChange={handleChange("password")}
               endAdornment={
                 <InputAdornment position="end">
@@ -156,7 +211,7 @@ const SignIn = (props) => {
         onClose={handleClose}
       >
         <Alert onClose={handleClose} variant="filled" severity="error">
-          {errorHandle}
+          A Error Ocurred! Make sure a user has not been created with this Email. 
         </Alert>
       </Snackbar>
     </div>

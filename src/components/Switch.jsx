@@ -11,6 +11,8 @@ import AddVehicle from "./Admin/AddVehicle";
 import EditVehicles from "./Admin/EditVehicles";
 import GetallUsers from "./Admin/GetallUsers";
 import ContactUs from "./ContactUs";
+import Addusers from "./Admin/Addusers";
+import NoTokenError from "./Admin/NoTokenError";
 
 const SwitchLink = (props) => {
   const front = () => {
@@ -35,22 +37,26 @@ const SwitchLink = (props) => {
         <Route exact path="/login">
             <Auth updateToken={props.updateToken} />
         </Route>
-        <Route exact path="/adminarea">
-            <DashboardAdmin sessionToken={props.sessionToken} website={props.website}/>
-        </Route>
         <Route exact path="/editvehicle/:id" component={EditVehicles} />
         <Route exact path="/product_view/:id" component={VehicleView} />
-        <Route exact path="/vehicle/addavehicle" website={props.website}>
-            <AddVehicle sessionToken={props.sessionToken} website={props.website}/>
-        </Route>
-        <Route exact path="/admin/users">
-            <GetallUsers sessionToken={props.sessionToken}/>
-        </Route>
         <Route exact path="/contacus">
             <ContactUs/>
         </Route>
         <Route exact path="/aboutus">
             <WhyUs />
+        </Route>
+        ///////////////////////////////Admin/////////////////////////////////////
+        <Route exact path="/adminarea">
+        {props.sessionToken ? <DashboardAdmin sessionToken={props.sessionToken} website={props.website}/> : <NoTokenError/>}
+        </Route>
+        <Route exact path="/vehicle/addavehicle" website={props.website}>
+        {props.sessionToken ? <AddVehicle sessionToken={props.sessionToken} website={props.website}/> : <NoTokenError/>}
+        </Route>
+        <Route exact path="/admin/users">
+        {props.sessionToken ? <GetallUsers sessionToken={props.sessionToken}/> : <NoTokenError/>}
+        </Route>
+        <Route exact path="/admin/users/addusers">
+        {props.sessionToken ? <Addusers sessionToken={props.sessionToken} updateToken={props.updateToken} website={props.website}/> : <NoTokenError/>}
         </Route>
       </Switch>
     </div>
