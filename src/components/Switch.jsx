@@ -36,7 +36,8 @@ const SwitchLink = (props) => {
             <Dashboard website={props.website} />
         </Route>
         <Route exact path="/test">
-            <Auth updateToken={props.updateToken} />
+        <Dashboard website={props.website} />
+            {/* <Auth updateToken={props.updateToken} /> */}
         </Route>
         <Route exact path="/product_view/:id" component={VehicleView} />
         <Route exact path="/contacus">
