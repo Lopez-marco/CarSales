@@ -82,6 +82,7 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((result) => {
         props.updateToken(result.sessionToken);
+        localStorage.setItem("role", result.user.usertype);
         console.log(result.sessionToken);
         console.log(result);
         let token = result.sessionToken;

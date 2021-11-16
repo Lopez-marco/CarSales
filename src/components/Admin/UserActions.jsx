@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-
+import React, {useState, useEffect} from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import DeleteVehicle from "./DeleteVehicle";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const ITEM_HEIGHT = 48;
 
@@ -24,10 +22,7 @@ const UserActions = (props) => {
   const handleDelete = () => {
     let token = localStorage.getItem("token");
     var myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      token
-    );
+    myHeaders.append("Authorization", token);
 
     var raw = "";
 
@@ -43,11 +38,13 @@ const UserActions = (props) => {
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => {console.log(result)
-       props.Getall()})
+      .then((result) => {
+        console.log(result);
+        props.Getall();
+      })
       .catch((error) => console.log("error", error));
-      
-      handleClose()
+
+    handleClose();
   };
   return (
     <div>
@@ -72,16 +69,10 @@ const UserActions = (props) => {
           },
         }}
       >
-        <MenuItem onClick={handleClose}> 
-          Edit Vehicle
+        <MenuItem onClick={handleClose} component={Link} to={`/edituser/${props.user.id}`}> 
+          Edit User
         </MenuItem>
         <MenuItem onClick={handleDelete}>Delete</MenuItem>
-        {/* <DeleteVehicle
-          vehicle={props.vehicle}
-          sessionToken={props.sessionToken}
-          handleClose={handleClose}
-          handleTable={props.handleTable}
-        /> */}
       </Menu>
     </div>
   );

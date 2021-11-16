@@ -13,6 +13,7 @@ import GetallUsers from "./Admin/GetallUsers";
 import ContactUs from "./ContactUs";
 import Addusers from "./Admin/Addusers";
 import NoTokenError from "./Admin/NoTokenError";
+import EditUser from "./Admin/EditUser";
 
 const SwitchLink = (props) => {
   const front = () => {
@@ -37,7 +38,6 @@ const SwitchLink = (props) => {
         <Route exact path="/login">
             <Auth updateToken={props.updateToken} />
         </Route>
-        <Route exact path="/editvehicle/:id" component={EditVehicles} />
         <Route exact path="/product_view/:id" component={VehicleView} />
         <Route exact path="/contacus">
             <ContactUs/>
@@ -46,6 +46,8 @@ const SwitchLink = (props) => {
             <WhyUs />
         </Route>
         ///////////////////////////////Admin/////////////////////////////////////
+        <Route exact path="/edituser/:id" component={EditUser} />
+        <Route exact path="/editvehicle/:id" component={EditVehicles} />
         <Route exact path="/adminarea">
         {props.sessionToken ? <DashboardAdmin sessionToken={props.sessionToken} website={props.website}/> : <NoTokenError/>}
         </Route>

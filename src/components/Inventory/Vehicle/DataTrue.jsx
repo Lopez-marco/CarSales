@@ -149,8 +149,8 @@ const DataTrue = (props) => {
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Carousel images={photo} />
             </Grid>
+            <Card elevation={2} style={{marginTop: "15px"}}>
             <CardHeader title="Basic Info:" style={{marginTop: "5px"}} />
-            <Card elevation={2}>
               <CardContent>
                 <Grid container>
                   <Grid item xs={12}></Grid>
@@ -183,8 +183,8 @@ const DataTrue = (props) => {
                 </Grid>
               </CardContent>
             </Card>
-            <CardHeader title="Description:" style={{paddingBottom: 0}} />
             <Card className={classes.description} elevation={3}>
+            <CardHeader title="Description:" style={{paddingBottom: 0}} />
               <CardContent>
                 <Grid item xs={12}>
                   <CardContent>

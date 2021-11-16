@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from "react";
-import {useHistory} from "react-router";
+import React, { useState, useEffect } from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
@@ -17,102 +16,75 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: 250,
-    paddingBottom: 15,
-  },
-  button: {
-    marginTop: 25,
-  },
-}));
+    root: {
+      width: 250,
+      paddingBottom: 15,
+    },
+    button: {
+      marginTop: 25,
+    },
+  }));
 
-const SignIn = (props) => {
-  const history = useHistory();
-  const classes = useStyles();
-  const [email, setEmail] = useState("");
-  const [fistName, setFistName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [usertype, setUsertype] = useState("");
-  const [open, setOpen] = React.useState(false);
-  const [successhandle, setSuccessHandle] = useState("");
+const EditUserTrue = (props) => {
+    const classes = useStyles();
+    const [email, setEmail] = useState(props.user[0].email);
+    const [password, setPassword] = useState(props.user[0].password);
+    const [usertype, setUsertype] = useState(props.user[0].usertype);
+    const [firstName, setFirstName] = useState(props.user[0].firstName);
+    const [lastName, setLastName] = useState(props.user[0].lastName);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+    const [values, setValues] = React.useState({
+        password: "",
+        showPassword: false,
+      });
 
-  const handleClose = (reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
+      const handleChange = (prop) => (event) => {
+        setValues({...values, [prop]: event.target.value});
+      };
+    
+      const handleClickShowPassword = () => {
+        setValues({...values, showPassword: !values.showPassword});
+      };
+    
+      const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+      };
 
-  const [values, setValues] = React.useState({
-    password: "",
-    showPassword: false,
+    const handleEdit = () => {
+        let token = localStorage.getItem("token")
+      var myHeaders = new Headers();
+      myHeaders.append(
+    "Authorization",
+      token
+    );
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    user: {
+      email: email,
+      password: password,
+      usertype: usertype,
+      firstName: firstName,
+      lastName: lastName,
+    },
   });
 
-  const handleChange = (prop) => (event) => {
-    setValues({...values, [prop]: event.target.value});
+  var requestOptions = {
+    method: "PUT",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
   };
 
-  const handleClickShowPassword = () => {
-    setValues({...values, showPassword: !values.showPassword});
-  };
+  fetch(`http://localhost:3000/user/updateuser/${props.user[0].id}`, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+};
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+console.log(props.user[0].email)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      user: {
-        firstName: fistName,
-        lastName: lastName,
-        email: email,
-        password: values.password,
-        usertype: usertype,
-      },
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:3000/user/signup", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        // props.updateToken(result.sessionToken);
-        console.log(result.sessionToken);
-        console.log(result);
-        setSuccessHandle(result.message)
-        handleClick(true)
-        let token = result.sessionToken;
-        if (token === undefined) {
-          handleClick(true);
-        } else {
-          routeChange();
-        }
-      })
-      .catch((error) => console.log("error", error));
-  };
-
-  const routeChange = () => {
-    let path = "/admin/users";
-    history.push(path);
-  };
-
-
-  return (
-    <div>
-      <CardContent>
+    return ( <div>
         <Typography
           className={classes.title}
           color="textSecondary"
@@ -120,14 +92,15 @@ const SignIn = (props) => {
         >
           Sign up
         </Typography>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form autoComplete="off" onSubmit={handleEdit}>
           <FormControl className={classes.root}>
             <InputLabel htmlFor="my-input">First Name</InputLabel>
             <Input
               id="my-input"
+              defaultValue={firstName}
               aria-describedby="my-helper-text"
               required={true}
-              onChange={(e) => setFistName(e.target.value)}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </FormControl>
           <br />
@@ -135,6 +108,7 @@ const SignIn = (props) => {
             <InputLabel htmlFor="my-input">Last Name</InputLabel>
             <Input
               id="my-input"
+              defaultValue={lastName}
               required={true}
               aria-describedby="my-helper-text"
               onChange={(e) => setLastName(e.target.value)}
@@ -144,17 +118,22 @@ const SignIn = (props) => {
           <FormControl className={classes.root}>
             <InputLabel htmlFor="my-input">Email address</InputLabel>
             <Input
+            defaultValue={email}
               id="my-input"
               required={true}
               aria-describedby="my-helper-text"
               onChange={(e) => setEmail(e.target.value)}
             />
           </FormControl>
+            
           <br />
+
+          {localStorage.getItem("role")=== "admin" ?
           <FormControl className={classes.root}>
             <TextField
               className={classes.year}
               select
+              defaultValue={usertype}
               required={true}
               label="User Type"
               onChange={(e) => setUsertype(e.target.value)}
@@ -165,16 +144,18 @@ const SignIn = (props) => {
               <MenuItem value={"Employee"}>Employee</MenuItem>
             </TextField>
           </FormControl>
+           : null}
           <br />
-          <FormControl>
+          {/* <FormControl>
             <InputLabel htmlFor="standard-adornment-password">
               Password
             </InputLabel>
             <Input
               id="standard-adornment-password"
               type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              required={true}
+            //   value={values.password}
+              defaultValue={password}
+            //   required={true}
               onChange={handleChange("password")}
               endAdornment={
                 <InputAdornment position="end">
@@ -188,25 +169,13 @@ const SignIn = (props) => {
                 </InputAdornment>
               }
             />
-          </FormControl>
+          </FormControl> */}
           <br />
           <Button type="submit" variant="contained" className={classes.button}>
-            Sign Up
+            Update User Profile
           </Button>
         </form>
-      </CardContent>
-      <Snackbar
-        anchorOrigin={{vertical: "top", horizontal: "center"}}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} variant="filled" severity="error">
-          A Error Ocurred! Make sure a user has not been created with this Email. 
-        </Alert>
-      </Snackbar>
-    </div>
-  );
-};
-
-export default SignIn;
+    </div> );
+}
+ 
+export default EditUserTrue;

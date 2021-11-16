@@ -87,6 +87,8 @@ const menuList = (props) => {
       </List>
       <Divider />
       <List component="nav" aria-label="secondary mailbox folders">
+
+        {localStorage.getItem("role") === "admin" ?  
         <Link
           to="/admin/users"
           style={{textDecoration: "none", color: "black"}}
@@ -115,6 +117,8 @@ const menuList = (props) => {
             <ListItemText primary="Users" />
           </ListItem>
         </Link>
+: ""}
+
         <ListItem button component="a" href="/">
           <ListItemIcon>
             <svg
