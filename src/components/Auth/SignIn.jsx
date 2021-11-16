@@ -87,7 +87,7 @@ const SignIn = (props) => {
       redirect: "follow",
     };
 
-    fetch(`${APIURL}/user/signup`, requestOptions)
+    fetch(`https://car-dealerserver.herokuapp.com/user/signup`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         // props.updateToken(result.sessionToken);
