@@ -6,6 +6,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
+import SignIn from "./SignIn";
 
 const useStyles = makeStyles({
   root: {
@@ -27,7 +28,7 @@ const Auth = (props) => {
   const classes = useStyles();
   const [isLogin, setIsLogin] = useState(true);
 
-  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : null;
+  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : <SignIn updateToken={props.updateToken}/> ;
 
   function Toggle(e) {
     e.preventDefault();
@@ -53,7 +54,7 @@ const Auth = (props) => {
                   onClick={(e) => Toggle(e)}
                   color="primary"
                 >
-                  {/* {LetterTrue} */}
+                  signup
                 </Button>
               </CardActions>
             </Card>
