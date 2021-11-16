@@ -10,13 +10,11 @@ import LocalPhoneIcon from "@material-ui/icons/LocalPhone";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import SearchIcon from "@material-ui/icons/Search";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import Logo from "../../assets/logo_size.jpg";
 import Paper from "@material-ui/core/Paper";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import { Link } from "react-router-dom";
-import { Nav } from "reactstrap";
 
 const useStyles = makeStyles((theme) =>
   createStyles({

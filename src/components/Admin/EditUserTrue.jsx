@@ -1,17 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {makeStyles} from "@material-ui/core/styles";
-import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "@material-ui/lab/Alert";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
@@ -28,27 +21,9 @@ const useStyles = makeStyles((theme) => ({
 const EditUserTrue = (props) => {
     const classes = useStyles();
     const [email, setEmail] = useState(props.user[0].email);
-    const [password, setPassword] = useState(props.user[0].password);
     const [usertype, setUsertype] = useState(props.user[0].usertype);
     const [firstName, setFirstName] = useState(props.user[0].firstName);
     const [lastName, setLastName] = useState(props.user[0].lastName);
-
-    const [values, setValues] = React.useState({
-        password: "",
-        showPassword: false,
-      });
-
-      const handleChange = (prop) => (event) => {
-        setValues({...values, [prop]: event.target.value});
-      };
-    
-      const handleClickShowPassword = () => {
-        setValues({...values, showPassword: !values.showPassword});
-      };
-    
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
 
     const handleEdit = () => {
         let token = localStorage.getItem("token")
@@ -62,7 +37,7 @@ const EditUserTrue = (props) => {
   var raw = JSON.stringify({
     user: {
       email: email,
-      password: password,
+      password: props.user[0].password,
       usertype: usertype,
       firstName: firstName,
       lastName: lastName,

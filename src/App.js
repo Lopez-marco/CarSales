@@ -8,7 +8,7 @@ import {Helmet} from "react-helmet";
 
 function App() {
   const [sessionToken, setSessionToken] = useState("");
-  const [website, setWebsite] = useState("Car Dealer");
+  const [website] = useState("Car Dealer");
 
   useEffect(() => {
     if (localStorage.getItem("token")) {

@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import {Container, Grid} from "@material-ui/core";
+import React from "react";
+import {Container} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
@@ -16,15 +16,6 @@ const useStyles = makeStyles({
 
 const NoTokenError = (props) => {
   const classes = useStyles();
-
-  const redirect = () => {
-      window.location.href = "/"
-  }
-
-  useEffect(() => {
-    let token = localStorage.getItem("token") ? null : setInterval(redirect, 5000)
-    // 
-  }, []);
 
   return (
     <div>

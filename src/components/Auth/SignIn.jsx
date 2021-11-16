@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router";
 import {makeStyles} from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
@@ -34,7 +34,7 @@ const SignIn = (props) => {
   const [lastName, setLastName] = useState("");
   const [usertype, setUsertype] = useState("");
   const [open, setOpen] = React.useState(false);
-  const [successhandle, setSuccessHandle] = useState("");
+  // const [successhandle, setSuccessHandle] = useState("");
 
   const handleClick = () => {
     setOpen(true);
@@ -92,7 +92,7 @@ const SignIn = (props) => {
         // props.updateToken(result.sessionToken);
         console.log(result.sessionToken);
         console.log(result);
-        setSuccessHandle(result.message)
+        // setSuccessHandle(result.message)
         handleClick(true)
         let token = result.sessionToken;
         if (token === undefined) {

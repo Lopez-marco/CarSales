@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Signup from "./SignIn";
 import Login from "./Login";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -27,10 +26,8 @@ const useStyles = makeStyles({
 const Auth = (props) => {
   const classes = useStyles();
   const [isLogin, setIsLogin] = useState(true);
-  const [letter, setLetter] = useState(true);
 
   const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : null;
-  const LetterTrue = letter ? "Register Now" : "Sign In";
 
   function Toggle(e) {
     e.preventDefault();

@@ -45,7 +45,7 @@ const SwitchLink = (props) => {
         <Route exact path="/aboutus">
             <WhyUs />
         </Route>
-        ///////////////////////////////Admin/////////////////////////////////////
+        {/* Admin */}
         <Route exact path="/edituser/:id" component={EditUser} />
         <Route exact path="/editvehicle/:id" component={EditVehicles} />
         <Route exact path="/adminarea">

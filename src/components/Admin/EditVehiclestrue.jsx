@@ -10,8 +10,6 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import {useHistory} from "react-router";
-import Switch from "@material-ui/core/Switch";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,11 +40,6 @@ const EditVehiclesTrue = (props) => {
   const [views] = useState(props.vehicle[0].views);
   const [loading, setLoading] = useState("");
   const history = useHistory();
-  const [state, setState] = useState(props.vehicle[0].enable);
-
-  const handleChange = (event) => {
-    setState(event.target.checked);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

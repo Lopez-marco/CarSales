@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(3),
-    // textAlign: "center",
     color: theme.palette.text.secondary,
   },
   year: {
@@ -52,12 +51,6 @@ const AddVehicle = (props) => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState("");
   const history = useHistory();
-  const [state, setState] = useState(false);
-
-  const handleChange = (event) => {
-    setState(event.target.checked);
-  };
-  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -203,7 +196,6 @@ const AddVehicle = (props) => {
                 </Grid>
                 <form
                   className={classes.root}
-                  // noValidate
                   autoComplete="off"
                   onSubmit={handleSubmit}
                 >
@@ -214,7 +206,6 @@ const AddVehicle = (props) => {
                         select
                         label="Year"
                         required={true}
-                        // value={currency}
                         onChange={(e) => setYear(e.target.value)}
                         helperText="Please select Vehicle Year"
                         className={classes.year}
@@ -343,7 +334,6 @@ const AddVehicle = (props) => {
                         select
                         label="Color"
                         required={true}
-                        // value={currency}
                         onChange={(e) => setColor(e.target.value)}
                         helperText="Please select Vehicle Color"
                       >
@@ -369,7 +359,6 @@ const AddVehicle = (props) => {
                         select
                         required={true}
                         label="Condition"
-                        // value={currency}
                         onChange={(e) => setCondition(e.target.value)}
                         helperText="Please select Vehicle Condition"
                       >
@@ -384,7 +373,6 @@ const AddVehicle = (props) => {
                         select
                         required={true}
                         label="Body Style"
-                        // value={currency}
                         onChange={(e) => setBodystyle(e.target.value)}
                         helperText="Please select Vehicle Body Style"
                       >
@@ -427,20 +415,6 @@ const AddVehicle = (props) => {
                         onChange={(event, value) => setPrice(value)}
                       />
                     </Grid>
-                    {/* <Grid item xs={12} sm={6} md={4} lg={4}>
-                      <FormControlLabel
-                        control={
-                          <Switch
-                            checked={state.checkedB}
-                            onChange={handleChange}
-                            color="primary"
-                            name="checkedB"
-                            inputProps={{"aria-label": "primary checkbox"}}
-                          />
-                        }
-                        label="Enable Vehicle"
-                      />
-                    </Grid> */}
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                       <Dropzone
                         className="dropzone"
@@ -471,9 +445,6 @@ const AddVehicle = (props) => {
                         onChange={handleOnChange}
                       />
                     </Grid>
-                    {/* <Grid item xs={12}>
-                      hello
-                    </Grid>*/}
                   </Grid>
                   <Button type="submit">Click to Submit</Button>
                 </form>
@@ -487,20 +458,3 @@ const AddVehicle = (props) => {
 };
 
 export default AddVehicle;
-
-// White
-// Yellow
-// Fuchsia
-// Red
-// Silver
-// Gray
-// Olive
-// Purple
-// Maroon
-// Aqua
-// Lime
-// Teal
-// Green
-// Blue
-// Navy
-// Black
