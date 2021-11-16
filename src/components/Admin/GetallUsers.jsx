@@ -15,6 +15,7 @@ import Paper from "@material-ui/core/Paper";
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import UserActions from "./UserActions";
+import APIURL from "../../helpers/environment";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -65,7 +66,7 @@ const GetallUsers = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3000/user/all", requestOptions)
+    fetch(`${APIURL}/user/all`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

@@ -15,6 +15,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
+import APIURL from "../../helpers/environment"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,7 +87,7 @@ const SignIn = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3000/user/signup", requestOptions)
+    fetch(`${APIURL}/user/signup`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         // props.updateToken(result.sessionToken);

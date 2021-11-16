@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react";
 import MenuDestok from "./Menu/MenuDestok";
 import {Helmet} from "react-helmet";
+import APIURL from "../../helpers/environment"
 
 const Dashboard = (props) => {
   const [vehicle, setVehicle] = useState([]);
 
   const fetchVehicle = () => {
-    fetch(`http://localhost:3000/vehicle/all`, {
+    fetch(`${APIURL}/vehicle/all`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

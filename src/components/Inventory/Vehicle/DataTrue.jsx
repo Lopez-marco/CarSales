@@ -11,6 +11,7 @@ import ReactHtmlParser from "react-html-parser";
 import CardHeader from "@material-ui/core/CardHeader";
 import Button from "@material-ui/core/Button";
 import {Helmet} from "react-helmet";
+import APIURL from "../../../helpers/environment"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,7 +97,7 @@ const DataTrue = (props) => {
     };
 
     fetch(
-      `http://localhost:3000/vehicle/editviews/${props.vehicle.id}`,
+      `${APIURL}/vehicle/editviews/${props.vehicle.id}`,
       requestOptions
     )
       .then((response) => response.text())

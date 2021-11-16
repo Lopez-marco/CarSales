@@ -10,6 +10,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Dropzone from "react-dropzone";
 import axios from "axios";
 import {useHistory} from "react-router";
+import APIURL from "../../helpers/environment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,7 +44,6 @@ const EditVehiclesTrue = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(localStorage.getItem("token"));
     let token = localStorage.getItem("token");
     var myHeaders = new Headers();
     myHeaders.append("Authorization", token);
@@ -76,7 +76,7 @@ const EditVehiclesTrue = (props) => {
     };
 
     fetch(
-      `http://localhost:3000/vehicle/editveh/${props.vehicle[0].id}`,
+      `${APIURL}/vehicle/editveh/${props.vehicle[0].id}`,
       requestOptions
     )
       .then((response) => response.text())

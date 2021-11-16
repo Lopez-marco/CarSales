@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
+import APIURL from '../../helpers/environment';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,7 +52,7 @@ const EditUserTrue = (props) => {
     redirect: "follow",
   };
 
-  fetch(`http://localhost:3000/user/updateuser/${props.user[0].id}`, requestOptions)
+  fetch(`${APIURL}/user/updateuser/${props.user[0].id}`, requestOptions)
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));

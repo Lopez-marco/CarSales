@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import DataTrue from "./DataTrue";
-
+import APIURL from "../../../helpers/environment"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,21 +38,8 @@ const VehicleView = (props) => {
 
   const [vehicle, setVehicle] = useState([]);
 
-  // const fetchVehicle = () => {
-  //   fetch(`http://localhost:3000/vehicle/get/${id}`, {
-  //     method: "GET",
-  //     headers: new Headers({
-  //       "Content-Type": "application/json",
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((results) => {
-  //       setVehicle(results);
-  //       console.log(results);
-  //     });
-  // };
   useEffect(() => {
-    fetch(`http://localhost:3000/vehicle/get/${id}`, {
+    fetch(`${APIURL}/vehicle/get/${id}`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

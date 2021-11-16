@@ -4,6 +4,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import {Link} from "react-router-dom";
+import APIURL from "../../helpers/environment";
 
 const ITEM_HEIGHT = 48;
 
@@ -34,7 +35,7 @@ const UserActions = (props) => {
     };
 
     fetch(
-      `http://localhost:3000/user/deleteuser/${props.user.id}`,
+      `${APIURL}/user/deleteuser/${props.user.id}`,
       requestOptions
     )
       .then((response) => response.text())

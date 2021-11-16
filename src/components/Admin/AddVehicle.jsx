@@ -16,6 +16,7 @@ import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 import {useHistory} from "react-router";
 import {Helmet} from "react-helmet";
+import APIURL from "../../helpers/environment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +55,6 @@ const AddVehicle = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(localStorage.getItem("token"));
     let token = localStorage.getItem("token");
     var myHeaders = new Headers();
     myHeaders.append("Authorization", props.sessionToken);
@@ -86,7 +86,7 @@ const AddVehicle = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3000/vehicle/addveh", requestOptions)
+    fetch(`${APIURL}/vehicle/addveh`, requestOptions)
       .then((response) => response.text())
       .then((results) => {
         console.log(token);

@@ -7,6 +7,7 @@ import MenuList from "./menuList";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import EditVehiclesTrue from "./EditVehiclestrue";
+import APIURL from "../../helpers/environment"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,21 +25,9 @@ const EditVehicles = (props) => {
   const [vehicle, setVehicle] = useState([]);
 
   let id = props.match.params.id;
-  // const GetData = () => {
-  //   fetch(`http://localhost:3000/vehicle/get/${id}`, {
-  //     method: "GET",
-  //     headers: new Headers({
-  //       "Content-Type": "application/json",
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((results) => {
-  //       console.log(results);
-  //       setVehicle(results);
-  //     });
-  // };
+
   useEffect(() => {
-    fetch(`http://localhost:3000/vehicle/get/${id}`, {
+    fetch(`${APIURL}/vehicle/get/${id}`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

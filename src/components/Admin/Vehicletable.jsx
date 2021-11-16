@@ -8,6 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import ActionsButton from "./ActionsButton";
+import APIURL from "../../helpers/environment";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -39,7 +40,7 @@ const Vehicletable = (props) => {
   const [vehicle, setVehicle] = useState([]);
 
   const handleTable = () => {
-    fetch(`http://localhost:3000/vehicle/all`, {
+    fetch(`${APIURL}/vehicle/all`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

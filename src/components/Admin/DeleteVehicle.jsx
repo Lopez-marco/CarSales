@@ -1,5 +1,6 @@
 import React from "react";
 import MenuItem from "@material-ui/core/MenuItem";
+import APIURL from "../../helpers/environment"
 
 const DeleteVehicle = (props) => {
 
@@ -20,7 +21,7 @@ const DeleteVehicle = (props) => {
     };
 
     fetch(
-      `http://localhost:3000/vehicle/delveh/${props.vehicle.id}`,
+      `${APIURL}/vehicle/delveh/${props.vehicle.id}`,
       requestOptions
     )
       .then((response) => response.text())

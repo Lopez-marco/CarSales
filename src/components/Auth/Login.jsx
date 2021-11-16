@@ -13,6 +13,7 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import APIURL from "../../helpers/environment"
 
 const useStyles = makeStyles({
   root: {
@@ -78,7 +79,7 @@ const Login = (props) => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:3000/user/signin", requestOptions)
+    fetch(`${APIURL}/user/signin`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         props.updateToken(result.sessionToken);

@@ -7,6 +7,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import {Helmet} from "react-helmet";
 import EditUserTrue from "./EditUserTrue";
+import APIURL from "../../helpers/environment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ const EditUser = (props) => {
       redirect: "follow",
     };
     
-    fetch(`http://localhost:3000/user/get/${id}`, requestOptions)
+    fetch(`${APIURL}/user/get/${id}`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
       console.log(result)
