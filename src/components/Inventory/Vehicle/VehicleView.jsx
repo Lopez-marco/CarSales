@@ -48,7 +48,7 @@ const VehicleView = (props) => {
       .then((res) => res.json())
       .then((results) => {
         setVehicle(results);
-        console.log(results);
+        // console.log(results);
       });
   },[id]);
 
