@@ -35,7 +35,7 @@ const EditVehicles = (props) => {
     })
       .then((res) => res.json())
       .then((results) => {
-        console.log(results);
+        // console.log(results);
         setVehicle(results);
       });
   }, []);

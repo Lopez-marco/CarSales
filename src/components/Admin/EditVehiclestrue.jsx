@@ -81,8 +81,8 @@ const EditVehiclesTrue = (props) => {
     )
       .then((response) => response.text())
       .then((results) => {
-        console.log(token);
-        console.log(results);
+        // console.log(token);
+        // console.log(results);
         setYear("");
         setMake("");
         setModel("");
@@ -128,7 +128,7 @@ const EditVehiclesTrue = (props) => {
           specificArrayInObject.push(fileURL);
           const newObj = {...image, specificArrayInObject};
           setImage(newObj);
-          console.log(image);
+          // console.log(image);
         });
     });
     axios.all(uploaders).then(() => {

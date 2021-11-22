@@ -69,7 +69,7 @@ const GetallUsers = (props) => {
     fetch(`${APIURL}/user/all`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         setUsers(result);
       })
       .catch((error) => console.log("error", error));

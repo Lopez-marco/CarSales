@@ -25,7 +25,8 @@ const DeleteVehicle = (props) => {
       requestOptions
     )
       .then((response) => response.text())
-      .then((result) => {console.log(result)
+      .then((result) => {
+        // console.log(result)
        props.handleTable()})
       .catch((error) => console.log("error", error));
       

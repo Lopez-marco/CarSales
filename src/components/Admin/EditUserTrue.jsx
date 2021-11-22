@@ -54,11 +54,15 @@ const EditUserTrue = (props) => {
 
   fetch(`${APIURL}/user/updateuser/${props.user[0].id}`, requestOptions)
     .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+    .then((result) => {
+      // console.log(result)
+    })
+    .catch((error) => {
+      // console.log("error", error)
+    });
 };
 
-console.log(props.user[0].email)
+// console.log(props.user[0].email)
 
     return ( <div>
         <Typography
