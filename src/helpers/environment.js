@@ -8,6 +8,6 @@ switch (window.location.hostname) {
     // this is the deployed react application
     case 'clever-curran-ffbad0.netlify.app':
         // this is the full url of your deployed API
-        APIURL = 'https://car-sales-server.herokuapp.com/'
+        APIURL = 'https://car-sales-server.herokuapp.com'
 }
 export default APIURL;
