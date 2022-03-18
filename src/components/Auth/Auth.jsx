@@ -28,7 +28,7 @@ const Auth = (props) => {
   const classes = useStyles();
   const [isLogin, setIsLogin] = useState(true);
 
-  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : null ;
+  const LoginTrue = isLogin ? <Login updateToken={props.updateToken}/> : <SignIn updateToken={props.updateToken}/> ;
 
   function Toggle(e) {
     e.preventDefault();
@@ -49,13 +49,13 @@ const Auth = (props) => {
             <Card className={classes.border} elevation={5}>
               {LoginTrue}
               <CardActions>
-                {/* <Button
+                <Button
                   className={classes.button}
                   onClick={(e) => Toggle(e)}
                   color="primary"
                 >
                   signup
-                </Button> */}
+                </Button>
               </CardActions>
             </Card>
           </Grid>
